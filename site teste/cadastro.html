@@ -8,32 +8,39 @@
 <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="bg">
+<body class="auth-bg">
 
-<div class="container">
+<div class="auth-container">
 
-  <div class="form-box">
-    <h1>Cadastro</h1>
+  <!-- ESQUERDA -->
+  <div class="auth-left">
+
+    <h1 class="logo">TECH ACADEMY</h1>
+    <br><br>
+
+    <h2>Cadastro</h2>
 
     <input id="nome" placeholder="Nome completo">
     <input id="cpf" placeholder="CPF">
     <input id="nascimento" type="date">
-    <input id="usuario" placeholder="Login">
+    <input id="usuario" placeholder="Email">
     <input id="senha" type="password" placeholder="Senha">
 
     <button onclick="cadastrar()">Criar Conta</button>
+    <br>
+
+    <p>Já tem conta? <a href="login.html">Log in</a></p>
+
   </div>
 
-  <div class="design-box"></div>
+  <!-- DIREITA -->
+  <div class="auth-right"></div>
 
 </div>
 
-<!-- ⚠️ ORDEM CORRETA -->
+<!-- JS -->
 <script src="db.js"></script>
 <script src="auth.js"></script>
 
-
-
-
-
+</body>
 </html>
