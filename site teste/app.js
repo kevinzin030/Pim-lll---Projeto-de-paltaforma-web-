@@ -1,69 +1,48 @@
 function init(){
-  verificarLogin();
-
-  let user = JSON.parse(localStorage.getItem("logado"));
-
-  if(user.tipo === "aluno") carregarAluno(user);
-  if(user.tipo === "gestor") carregarGestor();
-  if(user.tipo === "admin") carregarAdmin();
-}
-function init(){
-  carregarDashboard();
+  renderAlunoDashboard();
 }
 
-function carregarDashboard(){
-  const app = document.getElementById("app");
+function renderAlunoDashboard(){
+  const usuario = JSON.parse(localStorage.getItem("usuario")) || { nome: "Kevin" };
 
-  app.innerHTML = `
-    <section class="cursos-section">
-      <h2>SEUS CURSOS</h2>
+  document.getElementById("app").innerHTML = `
+  
+  <div class="dashboard">
 
-      <div class="cursos">
+    <h2 class="saudacao">Olá, ${usuario.nome} 👋</h2>
 
-        <div class="card" onclick="abrirCurso('web')">
-          <h3>DESENVOLVIMENTO WEB RESPONSIVO</h3>
-          <p>Este curso transforma sua visão técnica em uma força de impacto positivo, ensinando você a construir produtos que respeitam o ser humano e o planeta.</p>
+    <!-- BUSCA -->
+    <div class="busca">
+      <input type="text" placeholder="Buscar cursos...">
+    </div>
 
-          <div class="tempo">⏱ 2h 30min</div>
-
-          <button>Acessar</button>
-        </div>
-
-        <div class="card" onclick="abrirCurso('sql')">
-          <h3>BANCO DE DADOS COM SQL</h3>
-          <p>Aprenda a gerenciar o coração de qualquer aplicação com foco em integridade, segurança e responsabilidade social. Este curso vai além do SELECT e JOIN, capacitando você a projetar bancos de dados que respeitam a LGPD/GDPR..</p>
-
-          <div class="tempo">⏱ 2h 30min</div>
-
-          <button>Acessar</button>
-        </div>
-
-        <div class="card" onclick="abrirCurso('eng')">
-          <h3>ENGENHARIA DE SOFTWARE</h3>
-          <p>Este curso é o divisor de águas para quem deseja deixar de ser apenas um "escritor de código" para se tornar um arquiteto de soluções sustentáveis..</p>
-
-          <div class="tempo">⏱ 2h 30min</div>
-
-          <button>Acessar</button>
-        </div>
-        <div class="card" onclick="abrirCurso('eng')">
-          <h3>ENGENHARIA DE SOFTWARE</h3>
-          <p>Este curso é o divisor de águas para quem deseja deixar de ser apenas um "escritor de código" para se tornar um arquiteto de soluções sustentáveis..</p>
-
-          <div class="tempo">⏱ 2h 30min</div>
-
-          <button>Acessar</button>
-        </div>
-
-        
-
+    <!-- CARDS INFO -->
+    <div class="info-cards">
+      <div class="info-card">
+        <h3>📚 Meus Cursos</h3>
+        <span>0</span>
       </div>
-    </section>
-  `;
-}
-function abrirCurso(curso){
-  alert("Abrindo curso: " + curso);
 
-  // exemplo:
-  // window.location.href = "curso.html?id=" + curso;
+      <div class="info-card">
+        <h3>📈 Em andamento</h3>
+        <span>0</span>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="tabs">
+      <button class="ativo">Meus Cursos</button>
+      <button>Explorar</button>
+    </div>
+
+    <!-- CONTEÚDO -->
+    <div class="conteudo-vazio">
+      <div class="icone">📖</div>
+      <h3>Nenhum curso matriculado</h3>
+      <p>Explore nossa biblioteca e comece a aprender hoje!</p>
+      <button onclick="explorarCursos()">Explorar cursos</button>
+    </div>
+
+  </div>
+  `;
 }
