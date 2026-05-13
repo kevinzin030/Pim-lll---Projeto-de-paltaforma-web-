@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel Gestor</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="initGestor()">
+
+<header>
+  <h2 class="logo"><a href="index.html">TechAcademy</a></h2>
+  <button onclick="logout()">Sair</button>
+</header>
+
+<div class="dashboard">
+
+  <h2 class="saudacao">Painel do Gestor</h2>
+
+  <div class="tabs">
+    <button onclick="mostrar('metricas')" class="ativo">Métricas</button>
+    <button onclick="mostrar('cursos')">Cursos</button>
+    <button onclick="mostrar('conteudo')">Conteúdo</button>
+    <button onclick="mostrar('relatorios')">Relatórios</button>
+  </div>
+
+  <div id="conteudo"></div>
+
+</div>
+
+<script src="db.js"></script>
+<script src="auth.js"></script>
+
+<script>
+
+/* =========================
+   INIT
+========================= */
+
+function initGestor(){
+  let user = getUsuarioLogado();
+
+  if(!user || user.tipo !== "gestor"){
+    alert("Acesso negado!");
+    window.location.href = "login.html";
+    return;
+  }
+
+  mostrar("metricas");
+}
+
+/* =========================
+   TABS
+========================= */
+
+function mostrar(tipo){
+
+  document.querySelectorAll(".tabs button")
+    .forEach(b => b.classList.remove("ativo"));
+
+  event.target.classList.add("ativo");
+
+  if(tipo === "metricas") renderMetricas();
+  if(tipo === "cursos") renderCursos();
+  if(tipo === "conteudo") renderConteudo();
+  if(tipo === "relatorios") renderRelatorios();
+}
+
+/* =========================
+   MÉTRICAS
+========================= */
+
+function renderMetricas(){
+
+  let totalAlunos = alunos.length;
+  let totalCursos = JSON.parse(localStorage.getItem("cursos"))?.length || 0;
+
+  document.getElementById("conteudo").innerHTML = `
+    <div class="info-cards">
+
+      <div class="info-card">
+        <h3>Alunos</h3>
+        <span>${totalAlunos}</span>
+      </div>
+
+      <div class="info-card">
+        <h3>Cursos</h3>
+        <span>${totalCursos}</span>
+      </div>
+
+    </div>
+  `;
+}
+
+/* =========================
+   CURSOS
+========================= */
+
+let cursos = JSON.parse(localStorage.getItem("cursos")) || [];
+
+function renderCursos(){
+
+  document.getElementById("conteudo").innerHTML = `
+
+    <div class="card">
+      <h3>Novo Curso</h3>
+      <input id="cursoNome" placeholder="Nome do curso">
+      <button onclick="criarCurso()">Criar Curso</button>
+    </div>
+
+    <div class="cursos">
+      ${cursos.map((c,i) => `
+        <div class="card">
+          <h3>${c.nome}</h3>
+          <button onclick="selecionarCurso(${i})">Gerenciar</button>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
+function criarCurso(){
+  let nome = document.getElementById("cursoNome").value;
+
+  if(!nome) return alert("Digite o nome");
+
+  cursos.push({ nome, aulas: [], quiz: [] });
+
+  localStorage.setItem("cursos", JSON.stringify(cursos));
+  renderCursos();
+}
+
+/* =========================
+   CONTEÚDO
+========================= */
+
+let cursoSelecionado = null;
+
+function selecionarCurso(i){
+  cursoSelecionado = i;
+  renderConteudo();
+}
+
+function renderConteudo(){
+
+  if(cursoSelecionado === null){
+    return document.getElementById("conteudo").innerHTML =
+      `<p>Selecione um curso primeiro</p>`;
+  }
+
+  let curso = cursos[cursoSelecionado];
+
+  document.getElementById("conteudo").innerHTML = `
+
+    <h3>${curso.nome}</h3>
+
+    <div class="card">
+      <input id="aulaNome" placeholder="Nome da aula">
+      <button onclick="addAula()">Adicionar Aula</button>
+    </div>
+
+    <div class="card">
+      <input id="pergunta" placeholder="Pergunta">
+      <input id="correta" placeholder="Resposta correta">
+      <button onclick="addQuiz()">Adicionar Quiz</button>
+    </div>
+
+    <div class="cursos">
+      ${curso.aulas.map(a => `
+        <div class="card">
+          <h3>${a}</h3>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
+function addAula(){
+
+  let nome = document.getElementById("aulaNome").value;
+
+  if(!nome) return;
+
+  cursos[cursoSelecionado].aulas.push(nome);
+
+  salvarCursos();
+  renderConteudo();
+}
+
+function addQuiz(){
+
+  let pergunta = document.getElementById("pergunta").value;
+  let correta = document.getElementById("correta").value;
+
+  cursos[cursoSelecionado].quiz.push({ pergunta, correta });
+
+  salvarCursos();
+  renderConteudo();
+}
+
+function salvarCursos(){
+  localStorage.setItem("cursos", JSON.stringify(cursos));
+}
+
+/* =========================
+   RELATÓRIOS
+========================= */
+
+function renderRelatorios(){
+
+  document.getElementById("conteudo").innerHTML = `
+
+    <div class="cursos">
+      ${alunos.map(a => `
+        <div class="card">
+          <h3>${a.nome}</h3>
+          <p>XP: ${a.xp}</p>
+          <p>Cursos: ${a.cursos?.length || 0}</p>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
+</script>
+
+</body>
+</html>
