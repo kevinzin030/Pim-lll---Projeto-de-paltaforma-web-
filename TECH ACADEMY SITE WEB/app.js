@@ -94,6 +94,19 @@ function carregarAluno(user){
 
   </div>
 
+  <!-- CURSOS DISPONÍVEIS -->
+  <h2 class="titulo-section">
+
+    🚀 Cursos Disponíveis
+
+  </h2>
+
+  <div class="cursos-grid">
+
+    ${gerarCursosDisponiveis(user)}
+
+  </div>
+
   <!-- CURSOS -->
   <h2 class="titulo-section">
 
@@ -139,7 +152,118 @@ function carregarAluno(user){
 
 
 /* =========================
-   CURSOS
+   CURSOS DISPONÍVEIS
+========================= */
+
+function gerarCursosDisponiveis(user){
+
+  let html = "";
+
+  cursosDisponiveis.forEach((curso,index)=>{
+
+    let matriculado =
+    user.cursos.find(c => c.id === curso.id);
+
+    html += `
+
+    <div class="curso-card">
+
+      <img src="${curso.imagem}">
+
+      <div class="curso-info">
+
+        <span class="categoria">
+          ${curso.categoria}
+        </span>
+
+        <h3>
+          ${curso.nome}
+        </h3>
+
+        <p>
+          ${curso.descricao}
+        </p>
+
+        ${
+          matriculado
+
+          ?
+
+          `
+          <button disabled>
+            MATRICULADO
+          </button>
+          `
+
+          :
+
+          `
+          <button onclick="
+            matricular(${index})
+          ">
+            MATRICULAR
+          </button>
+          `
+        }
+
+      </div>
+
+    </div>
+
+    `;
+  });
+
+  return html;
+
+}
+
+
+/* =========================
+   MATRICULAR
+========================= */
+
+function matricular(index){
+
+  let user =
+  JSON.parse(localStorage.getItem("logado"));
+
+  let curso =
+  cursosDisponiveis[index];
+
+  let aluno =
+  alunos.find(a => a.login === user.login);
+
+  let jaExiste =
+  aluno.cursos.find(c => c.id === curso.id);
+
+  if(jaExiste){
+
+    alert("Você já está matriculado.");
+    return;
+
+  }
+
+  aluno.cursos.push(curso);
+
+  localStorage.setItem(
+    "alunos",
+    JSON.stringify(alunos)
+  );
+
+  localStorage.setItem(
+    "logado",
+    JSON.stringify(aluno)
+  );
+
+  alert("Matrícula realizada!");
+
+  carregarAluno(aluno);
+
+}
+
+
+/* =========================
+   MEUS CURSOS
 ========================= */
 
 function gerarCursos(user){
@@ -153,27 +277,27 @@ function gerarCursos(user){
 
   let html = "";
 
-  user.cursos.forEach(curso => {
+  user.cursos.forEach((curso,index)=>{
 
     html += `
 
     <div class="curso-card">
 
-      <img src="
-      https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop
-      ">
+      <img src="${curso.imagem}">
 
       <div class="curso-info">
 
         <span class="categoria">
-          CURSO
+          ${curso.categoria}
         </span>
 
         <h3>
           ${curso.nome}
         </h3>
 
-        <button>
+        <button onclick="
+          abrirCurso(${index})
+        ">
           CONTINUAR
         </button>
 
@@ -188,6 +312,22 @@ function gerarCursos(user){
 
 }
 
+
+/* =========================
+   ABRIR CURSO
+========================= */
+
+function abrirCurso(index){
+
+  localStorage.setItem(
+    "cursoSelecionado",
+    index
+  );
+
+  window.location.href =
+  "cursos-aluno.html";
+
+}
 
 /* =========================
    NOTAS
