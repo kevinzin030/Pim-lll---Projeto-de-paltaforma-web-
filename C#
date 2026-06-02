@@ -1,0 +1,509 @@
+using System;
+using System.Collections.Generic;
+
+namespace TechAcademy
+{
+    // =========================================================
+    // CLASSE ABSTRATA USUARIO
+    // =========================================================
+    public abstract class Usuario
+    {
+        // ATRIBUTOS
+        protected int idUsuario;
+        protected string nome;
+        protected string email;
+        protected string senha;
+
+        // PROPRIEDADES
+        public int IdUsuario
+        {
+            get { return idUsuario; }
+            set { idUsuario = value; }
+        }
+
+        public string Nome
+        {
+            get { return nome; }
+            set { nome = value; }
+        }
+
+        public string Email
+        {
+            get { return email; }
+            set { email = value; }
+        }
+
+        public string Senha
+        {
+            get { return senha; }
+            set { senha = value; }
+        }
+
+        // MÉTODOS
+        public virtual void Login()
+        {
+            Console.WriteLine("Usuário logado.");
+        }
+
+        public virtual void Logout()
+        {
+            Console.WriteLine("Usuário deslogado.");
+        }
+
+        public virtual void EditarPerfil()
+        {
+            Console.WriteLine("Perfil atualizado.");
+        }
+    }
+
+    // =========================================================
+    // CLASSE ALUNO (HERDA DE USUARIO)
+    // =========================================================
+    public class Aluno : Usuario
+    {
+        private DateTime dataNascimento;
+        private int xpTotalAluno;
+
+        // RELACIONAMENTOS
+        public List<Matricula> Matriculas { get; set; }
+        public List<Resposta> Respostas { get; set; }
+
+        // CONSTRUTOR
+        public Aluno()
+        {
+            Matriculas = new List<Matricula>();
+            Respostas = new List<Resposta>();
+        }
+
+        // PROPRIEDADES
+        public DateTime DataNascimento
+        {
+            get { return dataNascimento; }
+            set { dataNascimento = value; }
+        }
+
+        public int XpTotalAluno
+        {
+            get { return xpTotalAluno; }
+            set { xpTotalAluno = value; }
+        }
+
+        // MÉTODOS
+        public void MatricularSe()
+        {
+            Console.WriteLine("Aluno matriculado.");
+        }
+
+        public void ResponderQuestionario()
+        {
+            Console.WriteLine("Questionário respondido.");
+        }
+
+        public void VisualizarProgresso()
+        {
+            Console.WriteLine("Visualizando progresso.");
+        }
+
+        public void ReceberXP()
+        {
+            Console.WriteLine("XP recebido.");
+        }
+    }
+
+    // =========================================================
+    // CLASSE TUTOR (HERDA DE USUARIO)
+    // =========================================================
+    public class Tutor : Usuario
+    {
+        // MÉTODOS
+        public void CadastrarConteudo()
+        {
+            Console.WriteLine("Conteúdo cadastrado.");
+        }
+
+        public void EditarConteudo()
+        {
+            Console.WriteLine("Conteúdo editado.");
+        }
+
+        public void GerenciarQuestoes()
+        {
+            Console.WriteLine("Questões gerenciadas.");
+        }
+
+        public void VisualizarRelatorio()
+        {
+            Console.WriteLine("Relatório visualizado.");
+        }
+    }
+
+    // =========================================================
+    // CLASSE ADMINISTRADOR (HERDA DE USUARIO)
+    // =========================================================
+    public class Administrador : Usuario
+    {
+        // MÉTODOS
+        public void GerenciarUsuarios()
+        {
+            Console.WriteLine("Usuários gerenciados.");
+        }
+
+        public void VisualizarMetricas()
+        {
+            Console.WriteLine("Métricas visualizadas.");
+        }
+
+        public void CadastrarTutor()
+        {
+            Console.WriteLine("Tutor cadastrado.");
+        }
+    }
+
+    // =========================================================
+    // CLASSE CURSO
+    // =========================================================
+    public class Curso
+    {
+        private int idCurso;
+        private string nomeCurso;
+        private string descricaoCurso;
+
+        // AGREGAÇÃO
+        public List<Conteudo> Conteudos { get; set; }
+        public List<Questionario> Questionarios { get; set; }
+
+        // CONSTRUTOR
+        public Curso()
+        {
+            Conteudos = new List<Conteudo>();
+            Questionarios = new List<Questionario>();
+        }
+
+        // PROPRIEDADES
+        public int IdCurso
+        {
+            get { return idCurso; }
+            set { idCurso = value; }
+        }
+
+        public string NomeCurso
+        {
+            get { return nomeCurso; }
+            set { nomeCurso = value; }
+        }
+
+        public string DescricaoCurso
+        {
+            get { return descricaoCurso; }
+            set { descricaoCurso = value; }
+        }
+
+        // MÉTODOS
+        public void ExibirCurso()
+        {
+            Console.WriteLine("Curso exibido.");
+        }
+    }
+
+    // =========================================================
+    // CLASSE ABSTRATA CONTEUDO
+    // =========================================================
+    public abstract class Conteudo
+    {
+        protected int idConteudo;
+        protected string tituloConteudo;
+
+        // PROPRIEDADES
+        public int IdConteudo
+        {
+            get { return idConteudo; }
+            set { idConteudo = value; }
+        }
+
+        public string TituloConteudo
+        {
+            get { return tituloConteudo; }
+            set { tituloConteudo = value; }
+        }
+
+        // POLIMORFISMO
+        public virtual void ExibirConteudo()
+        {
+            Console.WriteLine("Conteúdo exibido.");
+        }
+    }
+
+    // =========================================================
+    // HERANÇA DE CONTEUDO
+    // =========================================================
+    public class ConteudoVideo : Conteudo
+    {
+        private int duracaoVideo;
+
+        public int DuracaoVideo
+        {
+            get { return duracaoVideo; }
+            set { duracaoVideo = value; }
+        }
+
+        public override void ExibirConteudo()
+        {
+            Console.WriteLine("Vídeo exibido.");
+        }
+    }
+
+    public class ConteudoPDF : Conteudo
+    {
+        private int quantidadePaginas;
+
+        public int QuantidadePaginas
+        {
+            get { return quantidadePaginas; }
+            set { quantidadePaginas = value; }
+        }
+
+        public override void ExibirConteudo()
+        {
+            Console.WriteLine("PDF exibido.");
+        }
+    }
+
+    public class ConteudoQuiz : Conteudo
+    {
+        public override void ExibirConteudo()
+        {
+            Console.WriteLine("Quiz exibido.");
+        }
+    }
+
+    // =========================================================
+    // CLASSE MATRICULA
+    // =========================================================
+    public class Matricula
+    {
+        private int idMatricula;
+        private DateTime dataMatricula;
+        private string statusMatricula;
+
+        // ASSOCIAÇÃO
+        public Aluno Aluno { get; set; }
+        public Curso Curso { get; set; }
+
+        // PROPRIEDADES
+        public int IdMatricula
+        {
+            get { return idMatricula; }
+            set { idMatricula = value; }
+        }
+
+        public DateTime DataMatricula
+        {
+            get { return dataMatricula; }
+            set { dataMatricula = value; }
+        }
+
+        public string StatusMatricula
+        {
+            get { return statusMatricula; }
+            set { statusMatricula = value; }
+        }
+    }
+
+    // =========================================================
+    // CLASSE QUESTIONARIO
+    // =========================================================
+    public class Questionario
+    {
+        private int idQuestionario;
+        private string tituloQuestionario;
+
+        // COMPOSIÇÃO
+        public List<Questao> Questoes { get; set; }
+
+        // CONSTRUTOR
+        public Questionario()
+        {
+            Questoes = new List<Questao>();
+        }
+
+        // PROPRIEDADES
+        public int IdQuestionario
+        {
+            get { return idQuestionario; }
+            set { idQuestionario = value; }
+        }
+
+        public string TituloQuestionario
+        {
+            get { return tituloQuestionario; }
+            set { tituloQuestionario = value; }
+        }
+    }
+
+    // =========================================================
+    // CLASSE QUESTAO
+    // =========================================================
+    public class Questao
+    {
+        private int idQuestao;
+        private string enunciadoQuestao;
+
+        // COMPOSIÇÃO
+        public List<Alternativa> Alternativas { get; set; }
+
+        // CONSTRUTOR
+        public Questao()
+        {
+            Alternativas = new List<Alternativa>();
+        }
+
+        // PROPRIEDADES
+        public int IdQuestao
+        {
+            get { return idQuestao; }
+            set { idQuestao = value; }
+        }
+
+        public string EnunciadoQuestao
+        {
+            get { return enunciadoQuestao; }
+            set { enunciadoQuestao = value; }
+        }
+    }
+
+    // =========================================================
+    // CLASSE ALTERNATIVA
+    // =========================================================
+    public class Alternativa
+    {
+        private int idAlternativa;
+        private string textoAlternativa;
+        private bool ehCorreta;
+
+        // PROPRIEDADES
+        public int IdAlternativa
+        {
+            get { return idAlternativa; }
+            set { idAlternativa = value; }
+        }
+
+        public string TextoAlternativa
+        {
+            get { return textoAlternativa; }
+            set { textoAlternativa = value; }
+        }
+
+        public bool EhCorreta
+        {
+            get { return ehCorreta; }
+            set { ehCorreta = value; }
+        }
+    }
+
+    // =========================================================
+    // CLASSE RESPOSTA
+    // =========================================================
+    public class Resposta
+    {
+        private int idResposta;
+        private string respostaTexto;
+        private float nota;
+
+        // ASSOCIAÇÃO
+        public Questao Questao { get; set; }
+
+        // PROPRIEDADES
+        public int IdResposta
+        {
+            get { return idResposta; }
+            set { idResposta = value; }
+        }
+
+        public string RespostaTexto
+        {
+            get { return respostaTexto; }
+            set { respostaTexto = value; }
+        }
+
+        public float Nota
+        {
+            get { return nota; }
+            set { nota = value; }
+        }
+    }
+
+    // =========================================================
+    // CLASSE PROGRESSO
+    // =========================================================
+    public class Progresso
+    {
+        private int porcentagemConclusao;
+
+        // ASSOCIAÇÃO
+        public Aluno Aluno { get; set; }
+        public Curso Curso { get; set; }
+
+        // PROPRIEDADES
+        public int PorcentagemConclusao
+        {
+            get { return porcentagemConclusao; }
+            set { porcentagemConclusao = value; }
+        }
+    }
+
+    // =========================================================
+    // CLASSE RELATORIO
+    // =========================================================
+    public class Relatorio
+    {
+        private int idRelatorio;
+        private DateTime dataGeracao;
+
+        // PROPRIEDADES
+        public int IdRelatorio
+        {
+            get { return idRelatorio; }
+            set { idRelatorio = value; }
+        }
+
+        public DateTime DataGeracao
+        {
+            get { return dataGeracao; }
+            set { dataGeracao = value; }
+        }
+
+        // MÉTODOS
+        public void GerarRelatorio()
+        {
+            Console.WriteLine("Relatório gerado.");
+        }
+    }
+
+    // =========================================================
+    // CLASSE NOTIFICACAO
+    // =========================================================
+    public class Notificacao
+    {
+        private int idNotificacao;
+        private string mensagem;
+
+        // PROPRIEDADES
+        public int IdNotificacao
+        {
+            get { return idNotificacao; }
+            set { idNotificacao = value; }
+        }
+
+        public string Mensagem
+        {
+            get { return mensagem; }
+            set { mensagem = value; }
+        }
+
+        // MÉTODOS
+        public void EnviarNotificacao()
+        {
+            Console.WriteLine("Notificação enviada.");
+        }
+    }
+}
