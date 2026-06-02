@@ -315,3 +315,14 @@ function voltarDashboard(){
   "dashboard.html";
 
 }
+function confirmarSaida() {
+
+    if (
+        confirm(
+            "Você realmente deseja sair?\n\nSerá necessário fazer login novamente para acessar a plataforma."
+        )
+    ) {
+        logout();
+    }
+
+}

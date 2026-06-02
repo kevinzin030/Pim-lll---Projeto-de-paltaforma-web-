@@ -25,15 +25,49 @@ const cursosBase = [
           titulo: "Introdução ao UX",
 
           conteudo: `
-O UX Design é uma área muito importante no desenvolvimento de sites, aplicativos e sistemas. A sigla UX significa User Experience, que em português quer dizer “Experiência do Usuário”. O principal objetivo do UX é fazer com que o usuário tenha uma experiência boa, simples e agradável ao utilizar um sistema.
+Módulo 1: Introdução ao Universo de UX e UI Design
+Seja bem-vindo ao ponto de partida da sua jornada no design digital. Sempre que você abre um aplicativo no seu celular, faz uma compra em um site ou assiste a um vídeo em uma plataforma de streaming, você está interagindo com o trabalho de profissionais de UX (User Experience) e UI (User Interface).
 
-Um profissional de UX pensa em como as pessoas usam aplicativos e páginas da internet no dia a dia. Ele busca criar telas organizadas, fáceis de entender e intuitivas, para que qualquer pessoa consiga navegar sem dificuldades. Quando um sistema possui um bom UX, o usuário encontra as informações rapidamente e consegue realizar tarefas com facilidade.
+Embora andem de mãos dadas, essas duas disciplinas possuem focos diferentes e complementares. Neste módulo, você entenderá o que cada uma significa, como elas funcionam na prática e por que são fundamentais para o sucesso de qualquer produto digital.
 
-Além disso, o UX melhora a navegação, deixando menus, botões e funções mais simples de usar. Isso aumenta a satisfação do usuário e faz com que as pessoas tenham mais vontade de continuar utilizando o sistema.
+O que é UX Design? (User Experience)
+UX Design, ou Design de Experiência do Usuário, é a disciplina que estuda e planeja como uma pessoa se sente, reage e se comporta ao interagir com um produto ou serviço. O principal objetivo do UX é garantir que essa jornada seja útil, fácil de usar e agradável.
 
-A usabilidade é um fator importante no UX, pois garante facilidade e conforto no uso do sistema. Outro ponto importante é a ergonomia da interface, que ajuda o usuário a interagir melhor com o sistema.
+O pilar central do UX é a empatia. Isso significa que o designer não projeta com base nos seus próprios gostos, mas sim investigando a fundo as reais necessidades, dores e limitações do público-alvo.
 
-A usabilidade inclui características como inteligibilidade, aprendizado, operacionalidade e atratividade.
+Como funciona o processo de UX?
+No dia a dia, o profissional de UX trabalha majoritariamente com estratégia, pesquisa e estrutura. O processo costuma envolver:
+
+Pesquisa com Usuários (User Research): Entrevistar e observar pessoas reais para entender o que elas precisam e quais problemas enfrentam.
+
+Criação de Personas: Perfis semi-fictícios que representam os clientes ideais do produto, ajudando a equipe a manter o foco em quem realmente importa.
+
+Arquitetura de Informação: Organizar e estruturar o conteúdo do site ou aplicativo para que as informações sejam fáceis de encontrar.
+
+Jornada do Usuário: Mapear o passo a passo que o cliente faz desde o momento em que abre o aplicativo até concluir seu objetivo final (como finalizar uma compra).
+
+O que é UI Design? (User Interface)
+UI Design, ou Design de Interface do Usuário, é a parte visual e tangível com a qual o usuário interage diretamente. É a tradução física e estética de toda a estratégia definida pelo UX. Se o UX planeja como o aplicativo funciona por trás das cortinas, o UI define como ele se apresenta visualmente na tela.
+
+O grande objetivo do UI é criar uma interface que seja não apenas atraente, mas também clara e intuitiva, guiando os olhos do usuário de forma natural.
+
+Como funciona o processo de UI?
+O profissional de UI transforma rascunhos estruturais em telas finais de alta fidelidade, utilizando ferramentas de mercado como o Figma. O trabalho envolve o domínio de elementos como:
+
+Tipografia: Escolha das fontes adequadas e definição da hierarquia visual (o que deve ser lido primeiro).
+
+Psicologia das Cores e Contraste: Uso de paletas de cores que transmitam a identidade da marca e garantam acessibilidade (permitindo que qualquer pessoa, incluindo daltônicos, consiga navegar).
+
+Componentes de Interface: Desenho de botões, menus, ícones, campos de formulário e animações de transição.
+
+Consistência: Garantir que o padrão visual seja o mesmo em todas as telas, gerando confiança e familiaridade para o usuário.
+
+A Sinergia: Como UX e UI trabalham juntos
+Para entender perfeitamente a diferença, imagine a construção de uma casa.
+
+O UX é o arquiteto e o engenheiro estrutural. Ele define quantos cômodos a casa precisa ter para atender à família, onde ficará a fiação elétrica e se o fluxo de passagem da cozinha para a sala faz sentido no cotidiano. O UI é o designer de interiores. Ele escolhe as cores das paredes, o tipo de piso, o estilo dos móveis e a iluminação para que o ambiente seja bonito, aconchegante e convidativo.
+
+Uma casa bonita com infiltração e tomadas mal localizadas é uma experiência ruim (UI bom, UX ruim). Uma casa com ótima estrutura, mas escura, sem pintura e desconfortável também afasta as pessoas (UX bom, UI ruim). O produto digital perfeito nasce do equilíbrio exato entre os dois.
           `
         },
 
@@ -91,11 +125,49 @@ A usabilidade inclui características como inteligibilidade, aprendizado, operac
           titulo: "Introdução ao UI",
 
           conteudo: `
-UI Design significa User Interface, ou Interface do Usuário. O UI é responsável pela parte visual dos sistemas, aplicativos e sites.
+Módulo 2: O Processo de Design e a Descoberta do Problema
+Agora que você já conhece a diferença fundamental entre UX e UI, é hora de entender como esses conceitos ganham vida. No desenvolvimento de produtos digitais, um erro muito comum é começar a desenhar telas logo no primeiro dia. Designers de sucesso seguem um processo estruturado para garantir que estão resolvendo o problema certo, para as pessoas certas.
 
-O objetivo do UI é criar telas bonitas, organizadas e fáceis de utilizar. O profissional de UI trabalha com cores, botões, tipografia, ícones e layout das páginas.
+Neste módulo, você vai descobrir a metodologia mais famosa do mercado para guiar esse processo — o Double Diamond (Duplo Diamante) — e aprenderá como a fase de pesquisa e empatia molda tudo o que usamos na internet.
 
-Um bom UI melhora a experiência do usuário e facilita a navegação dentro do sistema.
+O Modelo Double Diamond (Duplo Diamante)
+Criado pelo British Design Council, o Double Diamond é uma representação visual do processo de design dividido em quatro fases essenciais. Ele se baseia em momentos de divergência (abrir o leque para explorar possibilidades) e convergência (afunilar para tomar decisões).
+
+O modelo é dividido em dois diamantes principais:
+
+1. O Primeiro Diamante: Descobrir e Definir (O Espaço do Problema)
+Antes de pensar em soluções, precisamos dominar o problema.
+
+Descobrir (Imersão): É a fase de abertura. Aqui, o designer faz pesquisas, entrevista usuários, analisa concorrentes e coleta o máximo de dados possível. O objetivo é expandir o conhecimento e questionar as suposições iniciais.
+
+Definir (Foco): É hora de afunilar. Com todos os dados coletados, a equipe filtra o que realmente importa para identificar a verdadeira dor do usuário. O resultado desta fase é a definição clara do problema real que precisa ser resolvido.
+
+2. O Segundo Diamante: Desenvolver e Entregar (O Espaço da Solução)
+Com o problema validado, o foco muda para a criação da resposta ideal.
+
+Desenvolver (Ideação): Momento de abrir o leque novamente. A equipe faz briefings, brainstormings e desenha vários esboços e fluxos (wireframes) para explorar diferentes formas de resolver o problema definido.
+
+Entregar (Implementação): O afunilamento final. As melhores ideias são transformadas em protótipos de alta fidelidade, testadas com usuários reais para ajustes e, finalmente, enviadas para a equipe de desenvolvimento (programação) construir o produto final.
+
+O Poder da Pesquisa com Usuários (User Research)
+Como vimos no módulo anterior, a empatia é a alma do UX. A única forma de projetar com empatia é conversando e entendendo quem vai usar o seu produto. A pesquisa com usuários serve para validar se aquela "ideia genial" que a empresa teve realmente faz sentido para o mercado.
+
+Existem duas formas principais de coletar esses dados:
+
+Pesquisa Quantitativa: Responde ao "O quê?" e "Quanto?". É feita através de questionários fechados, métricas de acesso e dados numéricos. Ela ajuda a entender o comportamento em larga escala (Ex: "80% dos usuários abandonam o carrinho na tela de frete").
+
+Pesquisa Qualitativa: Responde ao "Por quê?" e "Como?". É realizada por meio de entrevistas individuais, testes de usabilidade e observação direta. Ela revela as motivações e sentimentos por trás dos números (Ex: "Os usuários abandonam o carrinho porque não entenderam onde digitar o cupom de desconto").
+
+Conhecendo o Usuário: Personas e Mapas de Empatia
+Para que a equipe de design não se perca em achismos, os dados coletados nas pesquisas são consolidados em ferramentas visuais. As duas principais são:
+
+A Persona
+É um perfil semi-fictício do usuário ideal do produto, construído com base em dados reais de comportamento. Em vez de focar apenas em dados demográficos genéricos (como "Homens, de 25 a 35 anos"), uma persona traz detalhes humanos:
+
+Exemplo de Persona: Lucas, 29 anos, analista de marketing. Trabalha em home office, tem uma rotina corrida e costuma esquecer de beber água. Ele precisa de um aplicativo de alarme prático, silencioso para não atrapalhar reuniões, mas que seja persistente o suficiente para tirá-lo da cadeira.
+
+O Mapa de Empatia
+Uma ferramenta visual que ajuda o designer a se colocar no lugar do usuário respondendo a seis perguntas fundamentais sobre ele: O que ele vê? O que ele ouve? O que ele realmente pensa e sente? O que ele fala e faz? Quais são suas dores? Quais são suas necessidades de sucesso?
           `
         },
 
@@ -158,11 +230,36 @@ Um bom UI melhora a experiência do usuário e facilita a navegação dentro do 
           titulo: "Introdução ao Desenvolvimento Web",
 
           conteudo: `
-O desenvolvimento web envolve a criação de sites, sistemas e aplicações acessadas pela internet.
+Módulo 1: Web Design Responsivo e Adaptação de Telas
+Hoje em dia, as pessoas acessam a internet a partir de uma infinidade de dispositivos: smartphones de telas pequenas, tablets, notebooks e monitores desktop gigantescos. Antigamente, as empresas criavam dois sites totalmente separados (um para computador e outro para celular). Hoje, o mercado utiliza o conceito de Web Design Responsivo.
 
-O HTML é utilizado para estruturar páginas web. O CSS é responsável pela estilização visual das páginas. Já o JavaScript adiciona interatividade aos sistemas.
+Neste módulo, você vai aprender como estruturar layouts que se adaptam inteligentemente a qualquer tamanho de tela, garantindo que a experiência do usuário (UX) e a beleza da interface (UI) permaneçam impecáveis, independentemente do dispositivo utilizado.
 
-Os processos iterativos permitem desenvolver versões progressivas de um sistema, facilitando melhorias contínuas.
+O que é Web Design Responsivo?
+O design responsivo é uma abordagem de desenvolvimento e design visual que faz com que as páginas da web se ajustem automaticamente ao tamanho da tela do usuário. Em vez de criar layouts estáticos e rígidos, o designer projeta uma estrutura fluida.
+
+Quando um site é responsivo, o conteúdo se reorganiza de forma natural: imagens mudam de tamanho, textos se reajustam para manter a leitura confortável e colunas de texto que ficavam lado a lado no computador são empilhadas uma embaixo da outra na tela vertical de um smartphone. O objetivo principal é eliminar a necessidade de o usuário dar "zoom" com os dedos para conseguir ler um texto ou clicar em um botão.
+
+Os Três Pilares do Layout Responsivo
+Para criar uma interface que se adapta perfeitamente, o UI Designer precisa dominar três conceitos fundamentais de estrutura:
+
+1. Grids Fluidas (Malhas Flexíveis)
+No design tradicional para impressão (como jornais e revistas), os tamanhos são fixos (em centímetros ou pixels). No design responsivo, usamos proporções e porcentagens. O layout é dividido em colunas invisíveis chamadas de grid. Em uma tela de computador, o site pode usar 12 colunas para espalhar o conteúdo horizontalmente. Em um celular, essa mesma grid se comprime para 4 colunas, reorganizando os elementos verticalmente.
+
+2. Imagens e Mídias Flexíveis
+As imagens e vídeos de um site responsivo precisam de regras de dimensionamento flexíveis. Elas são configuradas para nunca ultrapassarem a largura máxima da tela do dispositivo. Isso impede que uma foto gigante quebre o layout do celular ou faça surgir aquela barra de rolagem horizontal desconfortável na parte inferior da tela.
+
+3. Breakpoints (Pontos de Quebra)
+Os breakpoints são os pontos exatos de largura de tela onde o layout do site muda visualmente para se adaptar melhor. Por exemplo, o designer define que quando a tela for menor que 768 pixels (tamanho comum de tablets), o menu horizontal do topo vai sumir e se transformar em um "menu hambúrguer" (aquele ícone com três linhas horizontais). Os pontos de quebra mais comuns do mercado se dividem em: Mobile (celulares), Tablet e Desktop (computadores).
+
+A Filosofia Mobile-First (Primeiro o Celular)
+Criada pelo designer Luke Wroblewski, a estratégia Mobile-First dita que o design de um site deve ser pensado e projetado primeiro para as telas de celulares, e só depois expandido para telas maiores de computadores.
+
+Existem dois grandes motivos para o mercado adotar essa filosofia hoje:
+
+Foco no Essencial: A tela do celular é muito pequena. Começar por ela força o designer a priorizar o que realmente importa para o usuário, eliminando distrações e excessos visuais que muitas vezes poluem a versão de desktop.
+
+Desempenho e Mercado: A maior parte do tráfego de internet no mundo vem de dispositivos móveis. Além disso, os mecanismos de busca (como o Google) priorizam no ranqueamento os sites que funcionam perfeitamente bem no celular.
           `
         },
 
